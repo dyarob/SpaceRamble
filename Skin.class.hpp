@@ -7,13 +7,6 @@
 
 # include "CONST.h"
 
-# ifndef MAXBG
-#  define MAXBG 4
-#  define MAXLUM 2
-#  define MAXFOG 1
-#  define IFG MAXBG*MAXLUM*MAXFOG
-# endif
-
 class Skin {
 
 	private :
@@ -22,25 +15,28 @@ class Skin {
 		//Skin( Skin const& );
 		//Skin&	operator=( Skin const& );
 
-		short	fg;
-		short	bg;
-		short	lum;
-		short	fog;
+		short	_fg;
+		short	_bg;
+
+
+		static int _cId;
+		static std::vector<Skin*> reserved_cp;
 
 
 	public :
 		~Skin( void );
-		Skin( char, short, short, short, short );
+		Skin( char, int, int );
 
-		short	cpId;
-		char	c;
+		int		_id;
+		char	_c;
 
+		void	init_cp();
 		std::ofstream	&printTo( std::ofstream &o ) const;
 		std::ostream	&printTo( std::ostream &o ) const;
 		void	redefine_fg( short fg );
 		void	redefine_bg( short bg );
 
-/*
+
 		static short	cfg, cbg;
 		static Skin		*curr_sk;
 		static char		color_mode;
@@ -48,7 +44,6 @@ class Skin {
 		static void		init_reserved_cp();
 		static void		color_pick( short c );
 		static void		print_cc();
-*/
 };
 
 std::ofstream	&operator<<( std::ofstream &o, Skin const &sk );

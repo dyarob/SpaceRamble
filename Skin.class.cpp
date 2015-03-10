@@ -1,9 +1,9 @@
 #include "Skin.class.hpp"
 
 // *structors
-Skin::Skin(char c_, short fg_, short bg_, short lum_, short fog_) 
-	: fg(fg_), bg(bg_), lum(lum_), fog(fog_), c(c_) {
-	cpId = fg*IFG + bg + lum*MAXBG + fog*MAXBG;
+Skin::Skin(char c, int fg, int bg) 
+	: _fg(fg), _bg(bg), _id(Skin::_cId++), _c(c) {
+	init_pair(_id, _fg, _bg);
 }
 
 Skin::~Skin() {
@@ -11,14 +11,14 @@ Skin::~Skin() {
 
 // operators
 std::ofstream	&Skin::printTo( std::ofstream &o ) const {
-	o << c << ' ' << fg << ' ' << bg << ' ' << lum << ' ' << fog;
+	o << _c << ' ' << _fg << ' ' << _bg << ' ';
 	return o;
 }
 std::ofstream	&operator<<( std::ofstream &o, Skin const &sk ) {
 	return sk.printTo( o );
 }
 std::ostream	&Skin::printTo( std::ostream &o ) const {
-	o << c << ' ' << fg << ' ' << bg << ' ' << lum << ' ' << fog;
+	o << _c << ' ' << _fg << ' ' << _bg << ' ';
 	return o;
 }
 std::ostream	&operator<<( std::ostream &o, Skin const &sk ) {
