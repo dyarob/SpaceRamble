@@ -9,6 +9,10 @@
 # include	<list>
 
 class       WinUI_screen : public WinUI {
+	private:
+		Asciimg	*bg;
+
+
     public:
 		void	draw ( AGameObject* const &u ) const;
 		void	draw_all ( std::list<AGameObject*> const &l ) const;

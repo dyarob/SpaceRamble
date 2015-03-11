@@ -4,6 +4,7 @@
 # include <iostream>
 # include <ncurses.h>
 # include <string>
+# include "Asciimg.class.hpp"
 
 class       WinUI {
 

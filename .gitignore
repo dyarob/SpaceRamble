@@ -1,3 +1,8 @@
+.*.swp
+editor
+ft_retro
+logs
+
 # Compiled Object files
 *.slo
 *.lo
